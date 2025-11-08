@@ -1,65 +1,120 @@
-import Image from "next/image";
+import LanguageSelector from "@/componenets/LanguageSelector";
+import ToneSelector from "@/componenets/ToneSelector";
+import { useState } from "react";
+
+
+interface TranslationResult {
+text: string
+confidence: number
+}
 
 export default function Home() {
+  const [sourceText, setSourceText] = useState('')
+  const [sourceLang, setSourceLang] = useState('en')
+  const [targetLang, setTargetLang] = useState('es')
+  const [tone, setTone] = useState('casual')
+  const [isLoading, setIsLoading] = useState(false)
+  const [translation, setTranslation] = useState<TranslationResult | null>(null)
+  const [error, setError] = useState<string | null>(null)
+  const [recording, setRecording] = useState(false)
+
+
+  const handleTranslateClick = () => {
+    setError(null)
+    setIsLoading(true)
+    setTranslation(null)
+    setTimeout(() => {
+      setIsLoading(false)
+      if (!sourceText.trim()) {
+        setError('Please enter some text to translate.')
+        return
+      }
+      setTranslation({
+        text: `(${tone}) [${targetLang}] — ${sourceText.slice(0, 200)}...`,
+        confidence: Math.round(60 + Math.random() * 30)
+      })
+    }, 900)
+  }
+
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+    <div className="max-w-3xl mx-auto">
+      <section className="bg-white p-6 rounded-2xl shadow">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="md:col-span-2">
+            <label className="text-xs text-gray-600">Source text</label>
+            <textarea
+              value={sourceText}
+              onChange={(e) => setSourceText(e.target.value)}
+              rows={8}
+              placeholder="Type or speak your text here..."
+              className="mt-1 w-full rounded-lg border border-gray-200 p-3 text-sm shadow-sm resize-none"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            <div className="flex items-center gap-2 mt-3">
+              <button
+                onClick={() => setRecording((r) => !r)}
+                className={`btn ${recording ? 'btn-primary' : 'btn-ghost'}`}
+              >
+                {recording ? 'Recording...' : 'Start speaking'}
+              </button>
+              <button disabled className="btn btn-ghost" title="Text-to-speech coming soon">
+                Play translation
+              </button>
+              <div className="ml-auto text-sm text-gray-500">Preview only — GPT in Step 2</div>
+            </div>
+          </div>
+
+
+          <aside className="space-y-4">
+            <LanguageSelector value={sourceLang} onChange={setSourceLang} label="Source language" />
+            <LanguageSelector value={targetLang} onChange={setTargetLang} label="Target language" />
+            <ToneSelector value={tone} onChange={setTone} />
+
+
+            <div className="pt-2">
+              <button onClick={handleTranslateClick} className="btn btn-primary w-full" disabled={isLoading}>
+                {isLoading ? 'Translating...' : 'Translate'}
+              </button>
+            </div>
+          </aside>
         </div>
-      </main>
+      </section>
+
+
+      <section className="mt-6">
+        <div className="bg-white p-6 rounded-2xl shadow">
+          <div className="flex items-center justify-between">
+            <h3 className="text-sm font-medium">Translation</h3>
+            <div className="text-xs text-gray-500">Powered by GPT (coming Step 2)</div>
+          </div>
+
+
+          <div className="mt-4 min-h-[120px] flex items-center">
+            {isLoading && (
+              <div className="flex items-center gap-3">
+                <div className="loader" />
+                <div className="text-sm text-gray-600">Thinking... sit tight</div>
+              </div>
+            )}
+
+
+            {error && <div className="text-sm text-red-600">{error}</div>}
+
+
+            {translation && (
+              <div className="fade-in-up">
+                <div className="text-lg font-semibold">{translation.text}</div>
+                <div className="text-xs text-gray-500 mt-2">Source: GPT · Confidence: {translation.confidence}%</div>
+              </div>
+            )}
+
+
+            {!isLoading && !translation && !error && (
+              <div className="text-sm text-gray-500">No translation yet — enter text and choose tone, then press Translate.</div>
+            )}
+          </div>
+        </div>
+      </section>
     </div>
-  );
+  )
 }
