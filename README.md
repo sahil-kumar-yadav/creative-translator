@@ -1,158 +1,183 @@
-# 🪄 Creative Translator Web App
-
-### *Translate smarter, sound better, and express creatively with AI*
-
-![Translator Demo Banner](https://dummyimage.com/1200x500/1e293b/ffffff\&text=Creative+Translator+Web+App)
 
 ---
 
-### 🌍 Overview
+# 🌐✨ Creative Translator
 
-**Creative Translator** is a modern, interactive web app that goes beyond literal translation.
-Powered by **OpenAI GPT**, it captures the **tone**, **style**, and **emotion** of your message — helping you translate text *creatively* across languages.
+### A modern, voice-enabled, multilingual translation web app built with **Next.js**, **TailwindCSS**, **Framer Motion**, and **OpenAI** — now with **Enhanced Indian Regional Language Support** 🇮🇳✨
 
-Speak, type, or listen — everything happens with delightful animations and a smooth UX built with **Next.js 15**, **TailwindCSS**, and **Framer Motion**.
+<p align="center">
+  <img src="https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js"/>
+  <img src="https://img.shields.io/badge/TailwindCSS-3.4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Framer%20Motion-Animation-blueviolet?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/OpenAI-API-412991?style=for-the-badge&logo=openai&logoColor=white"/>
+</p>
 
----
-
-### ✨ Features
-
-| Feature                       | Description                                                           |
-| ----------------------------- | --------------------------------------------------------------------- |
-| 🧠 **AI-Powered Translation** | Uses **OpenAI GPT** for natural, context-aware translations.          |
-| 🎤 **Speech-to-Text**         | Speak directly — the app captures your voice and converts it to text. |
-| 🔊 **Text-to-Speech**         | Listen to your translated result in the target language.              |
-| 🎨 **Tone Selector**          | Choose a translation style — *formal, casual, poetic, funny*, etc.    |
-| ⚡ **Animations**              | Smooth transitions and micro-interactions using **Framer Motion**.    |
-| 🌓 **Dark Mode**              | Auto-detect or toggle dark mode for a premium experience.             |
-| 🧩 **No Database Needed**     | Fully client-driven; OpenAI API handles the intelligence.             |
+<p align="center">
+  <b>Translate text. Speak naturally. Create beautifully.</b><br/>
+  Built for global users — optimized for Indian regional languages.
+</p>
 
 ---
 
-### 🧑‍💻 Tech Stack
+## 🇮🇳✨ **Proudly Supports Indian Regional Languages**
 
-* **Framework:** [Next.js 15 (App Router)](https://nextjs.org)
-* **Language:** TypeScript
-* **Styling:** [TailwindCSS](https://tailwindcss.com)
-* **AI:** [OpenAI GPT API](https://platform.openai.com)
-* **Animations:** [Framer Motion](https://www.framer.com/motion/)
-* **Speech:** Browser Web Speech API (SpeechRecognition + SpeechSynthesis)
+Creative Translator comes with **dedicated enhancements** for Indian users, supporting major regional languages both for **translation** and **speech synthesis** (with intelligent fallbacks).
+
+### ✔️ Supported Indian Languages (Text Translation + Voice Features)
+
+| Language      | Native Script |
+| ------------- | ------------- |
+| **Hindi**     | हिन्दी        |
+| **Marathi**   | मराठी         |
+| **Konkani**   | कोंकणी        |
+| **Telugu**    | తెలుగు        |
+| **Tamil**     | தமிழ்         |
+| **Nepali**    | नेपाली        |
+| **Gujarati**  | ગુજરાતી       |
+| **Punjabi**   | ਪੰਜਾਬੀ        |
+| **Bengali**   | বাংলা         |
+| **Malayalam** | മലയാളം        |
+| **Kannada**   | ಕನ್ನಡ         |
+| **Odia**      | ଓଡ଼ିଆ         |
+| **Urdu**      | اُردُو        |
+
+✨ Additional logic was added to ensure:
+
+* Voice fallback if a native browser voice does not exist
+* Romanized speech output for Devanagari-based languages
+* Correct locale mapping for Web Speech API
+* Better pronunciation accuracy in non-Hindi regional languages
+
+This is one of the **very few open-source projects** that focus heavily on **Indian multilingual speech + AI translation** — great for **businesses**, **ed-tech**, **research**, and **large-scale India-first applications**.
 
 ---
 
-### ⚙️ Installation
+## 🚀 Overview
+
+**Creative Translator** is a next-generation web application for creators, businesses, and students who want a clean and intelligent multilingual communication tool with **speech**, **AI translation**, and **beautiful UI**.
+
+Designed with smooth animations, realtime voice support, and a delightful UX.
+
+---
+
+## 🎯 Features
+
+### 🔤 **Smart Translation Engine**
+
+* Supports **100+ global languages + full Indian language suite**
+* Multiple tones: *Casual, Formal, Professional, Friendly, Humorous, Poetic*
+* Powered by **OpenAI GPT models**
+
+### 🎙️ **Voice Input (Speech-to-Text)**
+
+* Speak in English or any supported Indian language
+* Auto-converts speech to text
+* Works directly in the browser
+
+### 🔊 **Text-to-Speech Output**
+
+* Speaks translations aloud
+* Smart fallback for languages without native browser voices
+* Romanized pronunciation for Devanagari languages
+
+---
+
+## 💎 **Beautiful UI + Smooth Animations**
+
+* Glassmorphism cards
+* Animated buttons with micro-interactions
+* Framer Motion page transitions
+* Fully responsive
+
+---
+
+## 🌚 **Dark Mode**
+
+* One-click toggle
+* Theme persists automatically
+
+---
+
+## 🧩 Tech Stack
+
+| Feature          | Technology                      |
+| ---------------- | ------------------------------- |
+| Framework        | **Next.js 15**                  |
+| UI Styling       | **TailwindCSS**                 |
+| Animations       | **Framer Motion**               |
+| AI               | **OpenAI GPT Models**           |
+| Speech-to-Text   | Web Speech Recognition API      |
+| Text-to-Speech   | Web Speech Synthesis API        |
+| Language Mapping | Custom regional language engine |
+
+---
+
+## 🛠️ Installation
 
 ```bash
-# 1. Clone the repository
 git clone https://github.com/yourusername/creative-translator.git
 cd creative-translator
-
-# 2. Install dependencies
 npm install
+```
 
-# 3. Set environment variable
-#   Replace <YOUR_OPENAI_API_KEY> with your actual OpenAI key
-echo "OPENAI_API_KEY=<YOUR_OPENAI_API_KEY>" > .env.local
+### Environment variables
 
-# 4. Run the development server
+```env
+OPENAI_API_KEY=your_key
+```
+
+Run the dev server:
+
+```bash
 npm run dev
 ```
 
-Then open **[http://localhost:3000](http://localhost:3000)** 🚀
+---
+
+## 🤝 Perfect For:
+
+### 💼 Businesses
+
+* Multilingual customer support
+* Ed-tech applications
+* Indian market localization
+* Internal communication tools
+
+### 👨‍💻 Developers
+
+* Ideal template for **AI x Next.js** applications
+* Clean speech-to-text + TTS integration
+* Extendable architecture
+
+### 🎓 Students
+
+* Great resume project
+* Shows mastery of frontend + AI + voice technologies
+* Highly presentable and unique
 
 ---
 
-### 🧠 How It Works
+## 🧠 Future Upgrades
 
-1. **Input Text / Speak:**
-   Enter text manually or use speech-to-text recording.
-
-2. **Select Tone & Languages:**
-   Choose source and target languages, plus a tone.
-
-3. **AI Translation (OpenAI GPT):**
-   The backend route (`/api/translate`) sends a structured prompt to GPT, returning natural translations with confidence scoring.
-
-4. **Playback & Share:**
-   Listen to your translated text with text-to-speech.
+* Offline translation mode
+* Automatic language detection
+* Indian language-specific TTS voices (custom engine)
+* Saved translation history
+* Chrome extension version
 
 ---
 
-### 🎬 Demo Preview
+## 📄 License
 
-```text
-You speak:   "Can you make this sound poetic?"
-App replies: "Could you render this as a gentle verse of words and wonder?"
-```
+MIT License — free for personal use.
 
 ---
 
-### 🛠️ Folder Structure
+❤️ Built with passion using
 
-```
-src/
- ├─ app/
- │   ├─ api/
- │   │   └─ translate/route.ts    # OpenAI API route
- │   ├─ page.tsx                  # Main translator page
- │   └─ layout.tsx
- ├─ components/
- │   ├─ LanguageSelector.tsx
- │   ├─ ToneSelector.tsx
- │   ├─ ThemeToggle.tsx
- │   └─ UI.tsx
- ├─ styles/
- │   └─ globals.css
- └─ utils/
-     └─ promptTemplate.ts
-```
+Next.js, TailwindCSS, Framer Motion & OpenAI
+
+<p align="center"> ⚡ <b>Creative Translator — Speak. Translate. Create.</b> ⚡ </p>
 
 ---
-
-### 💬 Example Prompt to OpenAI
-
-```ts
-Translate the following text from ${sourceLang} to ${targetLang} in a ${tone} tone.
-Text: "${text}"
-Return only the translated result, naturally phrased.
-```
-
----
-
-### 🎨 UI Sneak Peek
-
-![Dark Mode Preview](https://dummyimage.com/800x400/111827/ffffff\&text=Dark+Mode+Preview)
-
-A minimalistic layout with glowing hover effects, smooth transitions, and adaptive color schemes.
-
----
-
-### 🔒 Environment Variables
-
-| Key              | Description                             |
-| ---------------- | --------------------------------------- |
-| `OPENAI_API_KEY` | Your OpenAI API key for GPT translation |
-
----
-
-### 🧭 Roadmap
-
-* [ ] Multi-sentence context enhancement
-* [ ] Save & export translation history (optional local storage)
-* [ ] Share or copy translation to clipboard
-* [ ] Mobile PWA support
-* [ ] AI voice tone matching
-
----
-
-### 👏 Credits
-
-Built with ❤️ using
-**Next.js 15**, **TailwindCSS**, **Framer Motion**, and **OpenAI GPT API**.
-
----
-
-### 📜 License
-
-This project is released under the [MIT License](LICENSE).
 
